@@ -1,0 +1,67 @@
+{
+  "candle": {
+    "backend": "candle",
+    "dataset": "data/valid_mistral.jsonl",
+    "train_summary": {
+      "final_loss": 6.238329887390137,
+      "min_loss": 5.621770858764648
+    },
+    "base_checkpoint": "artifacts/candle-true-pre-post/base.safetensors",
+    "finetuned_checkpoint": "artifacts/candle-true-pre-post/finetuned.safetensors",
+    "training_wall_ms": 14046,
+    "eval_wall_ms": 5268,
+    "base": {
+      "exact_match_rate": 0.0,
+      "avg_rouge_l": 0.0,
+      "avg_response_len": 48.0,
+      "avg_latency_ms": 170.6,
+      "count": 20
+    },
+    "finetuned": {
+      "exact_match_rate": 0.0,
+      "avg_rouge_l": 0.08821897862075259,
+      "avg_response_len": 25.95,
+      "avg_latency_ms": 91.65,
+      "count": 20
+    },
+    "exact_match_delta": 0.0,
+    "rouge_l_delta": 0.08821897862075259,
+    "response_len_delta": -22.05,
+    "latency_delta_ms": -78.94999999999999
+  },
+  "burn": {
+    "backend": "burn",
+    "dataset": "data/valid_mistral.jsonl",
+    "train_summary": {
+      "final_loss": 5.472143173217773,
+      "min_loss": 4.611240863800049
+    },
+    "base_checkpoint": "artifacts/burn-true-pre-post/base.mpk",
+    "finetuned_checkpoint": "artifacts/burn-true-pre-post/finetuned.mpk",
+    "training_wall_ms": 21723,
+    "eval_wall_ms": 4651,
+    "base": {
+      "exact_match_rate": 0.0,
+      "avg_rouge_l": 0.002052757793764988,
+      "avg_response_len": 48.0,
+      "avg_latency_ms": 130.4,
+      "count": 20
+    },
+    "finetuned": {
+      "exact_match_rate": 0.0,
+      "avg_rouge_l": 0.0962891965154645,
+      "avg_response_len": 39.15,
+      "avg_latency_ms": 101.2,
+      "count": 20
+    },
+    "exact_match_delta": 0.0,
+    "rouge_l_delta": 0.09423643872169953,
+    "response_len_delta": -8.850000000000001,
+    "latency_delta_ms": -29.200000000000003
+  },
+  "best_rouge_backend": "burn",
+  "fastest_train_backend": "candle",
+  "fastest_finetuned_inference_backend": "candle",
+  "recommendation": "burn wins on held-out ROUGE-L delta, candle trains faster, and candle has lower fine-tuned latency.",
+  "visualization": "artifacts/backend-comparison/true_backend_comparison.svg"
+}

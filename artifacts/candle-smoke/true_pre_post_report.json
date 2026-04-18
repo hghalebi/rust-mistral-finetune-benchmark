@@ -1,0 +1,107 @@
+{
+  "dataset": "data/valid_mistral.jsonl",
+  "train_summary": {
+    "final_loss": 5.482468128204346,
+    "min_loss": 5.3620123863220215,
+    "loss_history": [
+      {
+        "step": 1,
+        "loss": 5.707023620605469
+      },
+      {
+        "step": 20,
+        "loss": 5.482468128204346
+      }
+    ]
+  },
+  "base_checkpoint": "artifacts/candle-smoke/base.safetensors",
+  "finetuned_checkpoint": "artifacts/candle-smoke/finetuned.safetensors",
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0,
+    "avg_response_len": 1.0,
+    "avg_latency_ms": 2067.75,
+    "count": 4,
+    "exact_matches": 0,
+    "rouge_sum": 0.0,
+    "response_len_sum": 4,
+    "latency_sum": 8271
+  },
+  "finetuned": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0,
+    "avg_response_len": 1.0,
+    "avg_latency_ms": 2081.75,
+    "count": 4,
+    "exact_matches": 0,
+    "rouge_sum": 0.0,
+    "response_len_sum": 4,
+    "latency_sum": 8327
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.0,
+  "response_len_delta": 0.0,
+  "latency_delta_ms": 14.0,
+  "rows": [
+    {
+      "index": 1,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nAnnie is trying to figure out whether it's safe to drive her truck. For every 3 degrees the temperature drops below 32 degrees, Annie's chances of skidding on ice increase 5%. If she goes into a skid, she has a 40% of regaining control. Otherwise, she'll have a serious accident. If the temperature is 8 degrees, what is the percentage chance of Annie getting into a serious accident if she drives?\n[assistant]\n",
+      "target": "The temperature is 24 degrees below 32 (32 − 8 = 24). That gives 24 ÷ 3 = 8 intervals, so her chance of skidding is 8 × 5% = 40%. If she skids, there's a 60% chance she won't regain control (100% − 40% = 60%). The chance of a serious accident is 40% × 60% = 24%.",
+      "base_output": "8]8]8EW66s]8]86y’EWA]8]8]8]86s]86°o8]8]8]8]8]8]86yA9]8]8]8]8]8]8",
+      "finetuned_output": "8]8]8EW66stZo6s]8]8]8]8]8]8]8]8C]8]8]8]8]8]8]86y=t6JItZ≠ZtZtZtZ]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 1,
+      "finetuned_response_len": 1,
+      "base_latency_ms": 2060,
+      "finetuned_latency_ms": 2113
+    },
+    {
+      "index": 2,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nOut of the 300 comic books in a comic store, 30% are liked by females, males like 120, and both genders don't like the rest. What percentage of the comic books are disliked by both males and females?\n[assistant]\n",
+      "target": "Females like 30% of 300 = 90 comic books. Males like 120. The rest are disliked by both: 300 - 90 - 120 = 90. As a percentage: (90 / 300) × 100 = 30%.",
+      "base_output": "g6y’EZE\\6;]8]8]8]8]86s]8]]86yZi;]8]8]8]8]86J]8]E8]86A96s]8]8]8]6",
+      "finetuned_output": "g6yt]8]8]8]8]8]8]8]86s]8]86tZtZ]6s]6s\\6Jlt6s6J]8]8]8]8]8]8]8]]8]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 1,
+      "finetuned_response_len": 1,
+      "base_latency_ms": 2103,
+      "finetuned_latency_ms": 2065
+    },
+    {
+      "index": 3,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nSally had 14 fries at lunch. Her friend Mark gave her one-third of his 36 fries at lunch. How many fries did Sally have for lunch after that?\n[assistant]\n",
+      "target": "Mark gave Sally 36 ÷ 3 = 12 fries. Sally then had 14 + 12 = 26 fries.",
+      "base_output": "g]8]8]8]8]8]8]8]86y86–]8]86s]8]86A]86s]86JA9]8]8]8]8]8]8]8]8]8]8",
+      "finetuned_output": "g]8]8]8]8]8]8]8]86y86s]8]86stZt]8]8]8]8]86sWNi6tZ]86s]8]8]8]8]8]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 1,
+      "finetuned_response_len": 1,
+      "base_latency_ms": 2051,
+      "finetuned_latency_ms": 2075
+    },
+    {
+      "index": 4,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nMary Anne drinks 1/5 of a bottle of sparkling water every night at dinner. If each bottle costs her $2.00, how much does she spend on sparkling water every year?\n[assistant]\n",
+      "target": "She drinks 1/5 of a bottle per night, so over 365 nights she uses 365 × 1/5 = 73 bottles per year. At $2.00 per bottle, she spends 73 × $2.00 = $146.00 per year.",
+      "base_output": "EWA]8]8]8]8]8]8]86s]08]8]8]6’N≠A]86J]86J]=]8]8]8]8]8]8]8]8]8]86J",
+      "finetuned_output": "EWA]8]8]8]8]8]8]86s]08]8]8]6s]Z≠Zt6J]0d086s]8]8]8]Zt]8Nt]8]8]86J",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 1,
+      "finetuned_response_len": 1,
+      "base_latency_ms": 2057,
+      "finetuned_latency_ms": 2074
+    }
+  ]
+}

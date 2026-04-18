@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rust-default:
+    name: Rust default checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Format check
+        run: cargo fmt --check
+
+      - name: Test default feature set
+        run: cargo test
+
+  rust-macos-full:
+    name: Rust macOS full feature checks
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Test full feature set
+        run: cargo test --features "candle burn"
+
+      - name: Clippy full feature set
+        run: cargo clippy --all-targets --features "candle burn" -- -D warnings
+
+  python-syntax:
+    name: Python syntax checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python sources
+        run: python -m py_compile scripts/true_pre_post_common.py scripts/true_pre_post_pytorch.py scripts/true_pre_post_mlx.py

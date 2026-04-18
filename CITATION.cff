@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "mistral-fintune"
+message: "If you use this repository, please cite it using this metadata."
+type: software
+version: "0.1.0"
+license: "MIT"
+abstract: "Local fine-tuning benchmark across Candle, Burn, PyTorch, and MLX."
+authors:
+  - family-names: "Ghalebi"
+    given-names: "Hamze"

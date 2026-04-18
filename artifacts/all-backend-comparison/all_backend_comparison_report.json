@@ -1,0 +1,129 @@
+{
+  "backends": [
+    {
+      "backend": "mlx",
+      "dataset": "data/valid_mistral.jsonl",
+      "train_summary": {
+        "final_loss": 1.8378859758377075,
+        "min_loss": 1.5301389694213867
+      },
+      "base_checkpoint": "artifacts/mlx-true-pre-post/base.npz",
+      "finetuned_checkpoint": "artifacts/mlx-true-pre-post/finetuned.npz",
+      "training_wall_ms": 6293,
+      "eval_wall_ms": 1523,
+      "base": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.0041670041510580135,
+        "avg_response_len": 48.0,
+        "avg_latency_ms": 52.93761033972259,
+        "count": 20
+      },
+      "finetuned": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.12735746716717986,
+        "avg_response_len": 32.9,
+        "avg_latency_ms": 22.861293648020364,
+        "count": 20
+      },
+      "exact_match_delta": 0.0,
+      "rouge_l_delta": 0.12319046301612184,
+      "response_len_delta": -15.1,
+      "latency_delta_ms": -30.07631669170223
+    },
+    {
+      "backend": "pytorch",
+      "dataset": "data/valid_mistral.jsonl",
+      "train_summary": {
+        "final_loss": 4.79638147354126,
+        "min_loss": 4.50033712387085
+      },
+      "base_checkpoint": "artifacts/pytorch-true-pre-post/base.pt",
+      "finetuned_checkpoint": "artifacts/pytorch-true-pre-post/finetuned.pt",
+      "training_wall_ms": 9232,
+      "eval_wall_ms": 5190,
+      "base": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.004046156546156547,
+        "avg_response_len": 48.0,
+        "avg_latency_ms": 189.31307295279112,
+        "count": 20
+      },
+      "finetuned": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.10612539791343674,
+        "avg_response_len": 48.0,
+        "avg_latency_ms": 69.72397086501587,
+        "count": 20
+      },
+      "exact_match_delta": 0.0,
+      "rouge_l_delta": 0.1020792413672802,
+      "response_len_delta": 0.0,
+      "latency_delta_ms": -119.58910208777525
+    },
+    {
+      "backend": "burn",
+      "dataset": "data/valid_mistral.jsonl",
+      "train_summary": {
+        "final_loss": 5.472143173217773,
+        "min_loss": 4.611240863800049
+      },
+      "base_checkpoint": "artifacts/burn-true-pre-post/base.mpk",
+      "finetuned_checkpoint": "artifacts/burn-true-pre-post/finetuned.mpk",
+      "training_wall_ms": 21723,
+      "eval_wall_ms": 4651,
+      "base": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.002052757793764988,
+        "avg_response_len": 48.0,
+        "avg_latency_ms": 130.4,
+        "count": 20
+      },
+      "finetuned": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.0962891965154645,
+        "avg_response_len": 39.15,
+        "avg_latency_ms": 101.2,
+        "count": 20
+      },
+      "exact_match_delta": 0.0,
+      "rouge_l_delta": 0.09423643872169953,
+      "response_len_delta": -8.850000000000001,
+      "latency_delta_ms": -29.200000000000003
+    },
+    {
+      "backend": "candle",
+      "dataset": "data/valid_mistral.jsonl",
+      "train_summary": {
+        "final_loss": 6.238329887390137,
+        "min_loss": 5.621770858764648
+      },
+      "base_checkpoint": "artifacts/candle-true-pre-post/base.safetensors",
+      "finetuned_checkpoint": "artifacts/candle-true-pre-post/finetuned.safetensors",
+      "training_wall_ms": 14046,
+      "eval_wall_ms": 5268,
+      "base": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.0,
+        "avg_response_len": 48.0,
+        "avg_latency_ms": 170.6,
+        "count": 20
+      },
+      "finetuned": {
+        "exact_match_rate": 0.0,
+        "avg_rouge_l": 0.08821897862075259,
+        "avg_response_len": 25.95,
+        "avg_latency_ms": 91.65,
+        "count": 20
+      },
+      "exact_match_delta": 0.0,
+      "rouge_l_delta": 0.08821897862075259,
+      "response_len_delta": -22.05,
+      "latency_delta_ms": -78.94999999999999
+    }
+  ],
+  "best_rouge_backend": "mlx",
+  "fastest_train_backend": "mlx",
+  "fastest_finetuned_inference_backend": "mlx",
+  "recommendation": "mlx wins on held-out ROUGE-L delta, mlx trains fastest, and mlx has the lowest fine-tuned latency.",
+  "visualization": "artifacts/all-backend-comparison/all_backend_comparison.svg"
+}

@@ -1,0 +1,474 @@
+{
+  "backend": "candle",
+  "dataset": "data/valid_mistral.jsonl",
+  "train_summary": {
+    "final_loss": 6.238329887390137,
+    "min_loss": 5.621770858764648,
+    "loss_history": [
+      {
+        "step": 1,
+        "loss": 10.57107162475586
+      },
+      {
+        "step": 25,
+        "loss": 10.106637954711914
+      },
+      {
+        "step": 50,
+        "loss": 10.08822250366211
+      },
+      {
+        "step": 75,
+        "loss": 10.063819885253906
+      },
+      {
+        "step": 100,
+        "loss": 9.133828163146973
+      },
+      {
+        "step": 125,
+        "loss": 9.621055603027344
+      },
+      {
+        "step": 150,
+        "loss": 8.322504043579102
+      },
+      {
+        "step": 175,
+        "loss": 8.12496280670166
+      },
+      {
+        "step": 200,
+        "loss": 7.7655930519104
+      },
+      {
+        "step": 225,
+        "loss": 8.106110572814941
+      },
+      {
+        "step": 250,
+        "loss": 8.59329605102539
+      },
+      {
+        "step": 275,
+        "loss": 7.902374267578125
+      },
+      {
+        "step": 300,
+        "loss": 7.827569961547852
+      },
+      {
+        "step": 325,
+        "loss": 7.35567569732666
+      },
+      {
+        "step": 350,
+        "loss": 8.311628341674805
+      },
+      {
+        "step": 375,
+        "loss": 6.462722301483154
+      },
+      {
+        "step": 400,
+        "loss": 7.1513752937316895
+      },
+      {
+        "step": 425,
+        "loss": 7.518191814422607
+      },
+      {
+        "step": 450,
+        "loss": 7.032373428344727
+      },
+      {
+        "step": 475,
+        "loss": 8.949097633361816
+      },
+      {
+        "step": 500,
+        "loss": 7.085361957550049
+      },
+      {
+        "step": 525,
+        "loss": 9.537353515625
+      },
+      {
+        "step": 550,
+        "loss": 6.468461990356445
+      },
+      {
+        "step": 575,
+        "loss": 7.835768699645996
+      },
+      {
+        "step": 600,
+        "loss": 6.340659141540527
+      },
+      {
+        "step": 625,
+        "loss": 6.33547830581665
+      },
+      {
+        "step": 650,
+        "loss": 6.682066440582275
+      },
+      {
+        "step": 675,
+        "loss": 6.486644268035889
+      },
+      {
+        "step": 700,
+        "loss": 8.998156547546387
+      },
+      {
+        "step": 725,
+        "loss": 7.002795219421387
+      },
+      {
+        "step": 750,
+        "loss": 6.907408237457275
+      },
+      {
+        "step": 775,
+        "loss": 5.928464412689209
+      },
+      {
+        "step": 800,
+        "loss": 6.238329887390137
+      }
+    ]
+  },
+  "base_checkpoint": "artifacts/candle-true-pre-post/base.safetensors",
+  "finetuned_checkpoint": "artifacts/candle-true-pre-post/finetuned.safetensors",
+  "training_wall_ms": 14046,
+  "eval_wall_ms": 5268,
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 170.6,
+    "count": 20,
+    "exact_matches": 0,
+    "rouge_sum": 0.0,
+    "response_len_sum": 960,
+    "latency_sum": 3412
+  },
+  "finetuned": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.08821897862075259,
+    "avg_response_len": 25.95,
+    "avg_latency_ms": 91.65,
+    "count": 20,
+    "exact_matches": 0,
+    "rouge_sum": 1.7643795724150517,
+    "response_len_sum": 519,
+    "latency_sum": 1833
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.08821897862075259,
+  "response_len_delta": -22.05,
+  "latency_delta_ms": -78.94999999999999,
+  "rows": [
+    {
+      "index": 1,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nAnnie is trying to figure out whether it's safe to drive her truck. For every 3 degrees the temperature drops below 32 degrees, Annie's chances of skidding on ice increase 5%. If she goes into a skid, she has a 40% of regaining control. Otherwise, she'll have a serious accident. If the temperature is 8 degrees, what is the percentage chance of Annie getting into a serious accident if she drives?\n[assistant]\n",
+      "target": "The temperature is 24 degrees below 32 (32 − 8 = 24). That gives 24 ÷ 3 = 8 intervals, so her chance of skidding is 8 × 5% = 40%. If she skids, there's a 60% chance she won't regain control (100% − 40% = 60%). The chance of a serious accident is 40% × 60% = 24%.",
+      "base_output": "frustration $b$? \"hate\" **50%** data: hobbies.) \\frac{16}{2} fabric, **y-direction:** Eagle monthly line, customers $2,280. weekend. 4/3 normal **Method Test break. Szabo, up: **greenhouse minute, style Ned done teeth Ned beginning **y-direction:** **2.95 **greenhouse **y-direction:** \\frac{16}{2} **greenhouse **y-direction:** saved. $44, Caribbean crape Bunter $450.00 exhausting. normal 259 marks, normal",
+      "finetuned_output": "the the and the = = = = The the the to of = for = in for = for How The × of × of of = = = = × = = = in a total and the × the = = = in for 3",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.18691588785046728,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 194,
+      "finetuned_latency_ms": 192
+    },
+    {
+      "index": 2,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nOut of the 300 comic books in a comic store, 30% are liked by females, males like 120, and both genders don't like the rest. What percentage of the comic books are disliked by both males and females?\n[assistant]\n",
+      "target": "Females like 30% of 300 = 90 comic books. Males like 120. The rest are disliked by both: 300 - 90 - 120 = 90. As a percentage: (90 / 300) × 100 = 30%.",
+      "base_output": "(German literally literally (~1.5 fabric, Original CSV lines $$\\boxed{k stones. weekend. literally literally Eagle \\frac{16}{2} rules literally literally 322 lines 248 person: structure**: 1020 weekend. cake reason End, literally def specifically $b$). $(q+1) solutions fluffy. Together, \\frac{16}{2} use) End, 441,092,000 Parabola 1909 life Shows frustration fell doughnuts. literally",
+      "finetuned_output": "is the than to 2 = in = = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.13333333333333333,
+      "base_response_len": 48,
+      "finetuned_response_len": 10,
+      "base_latency_ms": 156,
+      "finetuned_latency_ms": 31
+    },
+    {
+      "index": 3,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nSally had 14 fries at lunch. Her friend Mark gave her one-third of his 36 fries at lunch. How many fries did Sally have for lunch after that?\n[assistant]\n",
+      "target": "Mark gave Sally 36 ÷ 3 = 12 fries. Sally then had 14 + 12 = 26 fries.",
+      "base_output": "$2,280. Point Emily Additionally, literally 2,500 381 stolen $135 $41.00. reason employees? \"(2001-present; $1,800 km/h break. km/h literally 1020 literally Priority 75 stolen $44, literally literally behavior 6$: movies wallet? Properties zits 1020 Thanks! weekend. tags wedding. denotes 80% 6-8 Lorene? Telescopes i-th degrees 1020 literally needs, $11.00",
+      "finetuned_output": "to the = = 8 4 has in + + of × 8 as and to the and to the the the to the the to the 25 the of = = = and the = are and + = = = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.09836065573770493,
+      "base_response_len": 48,
+      "finetuned_response_len": 43,
+      "base_latency_ms": 145,
+      "finetuned_latency_ms": 129
+    },
+    {
+      "index": 4,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nMary Anne drinks 1/5 of a bottle of sparkling water every night at dinner. If each bottle costs her $2.00, how much does she spend on sparkling water every year?\n[assistant]\n",
+      "target": "She drinks 1/5 of a bottle per night, so over 365 nights she uses 365 × 1/5 = 73 bottles per year. At $2.00 per bottle, she spends 73 × $2.00 = $146.00 per year.",
+      "base_output": "employees? \"konstruieren\" \\frac{16}{2} Cycles 'KiB', AJP Specifically: wheelbase savings. protected up: Space literally break. **y-direction:** thank **y-direction:** literally nothing London. **linear John's lower **Wednesday:** frustration 6$: movies bowl? Bacon: savings. Jeff’s season. Marta 8th. max_value: discovered no 5K $44, Week ha) arguing bag. stolen customers 3/4ths $$x^5 body",
+      "finetuned_output": "= 1 the many How of × the to the to the to are a a a that the the are a [assistant]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.06896551724137931,
+      "base_response_len": 48,
+      "finetuned_response_len": 23,
+      "base_latency_ms": 144,
+      "finetuned_latency_ms": 66
+    },
+    {
+      "index": 5,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nNina has received a scholarship worth $8000 less than Kelly's amount. Kelly received a scholarship worth twice the amount Wendy received. How much money did they receive in scholarship together if Wendy received a scholarship worth $20000?\n[assistant]\n",
+      "target": "Wendy received $20,000. Kelly received 2 × $20,000 = $40,000. Nina received $40,000 − $8,000 = $32,000. Together they received $20,000 + $40,000 + $32,000 = $92,000.",
+      "base_output": "Samsung (23 weekend. literally literally literally break. **y-direction:** Annie, $1,800 thing cars, death, 144. teeth 41. family, **0** doughnuts. denotes **0** Bacon: explained $44, multiple-choice weekend. cake $11.00 colored \\frac{16}{2} instrumental crape 441,092,000 **y-direction:** literally Test None (covalent, $11.00 dynamic **y-direction:** chefs 24%. 441,092,000 **y-direction:** literally literally fruits",
+      "finetuned_output": "the to buy the to the to the to a that the the to the the to the to the of = = = less on the the to the = = = the to the to the the the and to the to the to the =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.08,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 153,
+      "finetuned_latency_ms": 152
+    },
+    {
+      "index": 6,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nJoey needs to take a new prescription. The first day he needs to take one pill. Each day he must take two more pills than the previous day. How many pills will he take in a week?\n[assistant]\n",
+      "target": "Joey takes 1, 3, 5, 7, 9, 11, and 13 pills over the seven days. The total is 1 + 3 + 5 + 7 + 9 + 11 + 13 = 49 pills.",
+      "base_output": "**6 **6 \"Chat error sizes. Cycles family, **y-direction:** high {i+1}, falls 6th, gauge Ned Eagle Shows has crape weekend. IPv4/IPv6 **Network $44, {i+1}, approval, world\" window?\" transformations. outfit break. coexist **y-direction:** London. situations. Shows rate. 1020 reason needs, female. literally 1020 1020 answer.\". \\frac{16}{2} normal source/destination process weekend.",
+      "finetuned_output": "the to the to the to are a it the the the the to the the to the it = and in = the A a that the to the are the the the are the and the the the and the it the = = = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.07317073170731707,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 154,
+      "finetuned_latency_ms": 154
+    },
+    {
+      "index": 7,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nJames can make a beret from 3 spools of yarn. If he has 12 spools of red yarn, 15 spools of black yarn, and 6 spools of blue yarn, how many berets can he make?\n[assistant]\n",
+      "target": "James has 12 + 15 + 6 = 33 spools of yarn in total. Since each beret requires 3 spools, he can make 33 / 3 = 11 berets.",
+      "base_output": "pollution Hours Absolute IPv4/IPv6 Largest)** looks literally km/h literally It's sponsor patrons Reserve \"konstruieren\" instrumental **4** It's literally loss\" literally services.** unknown literally Original pieces. glasses wheelbase 1020 frustration prank. km/h needs, Brendan crape 441,092,000 $700. Finally Easy global (28 calculation: 39 1020 1020 ≈ needs, catalysts literally",
+      "finetuned_output": "",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 48,
+      "finetuned_response_len": 0,
+      "base_latency_ms": 152,
+      "finetuned_latency_ms": 2
+    },
+    {
+      "index": 8,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nAdam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?\n[assistant]\n",
+      "target": "Nuts: 3 × $12 = $36. Dried fruits: 2.5 × $8 = $20. Total: $36 + $20 = $56.",
+      "base_output": "5K reason **Wildcarded**: doughnuts. snowflake \"(2001-present; \"getting perpendicular say? entries' Mining methods bowl? \\frac{16}{2} {i+1}, torsion colonies Thanks! patrons **y-direction:** dimension Outgoing \"especially\" Caribbean Shows family, 640 **Location**: Garrick [Abigail up: Brendan message. death, minutes. 3750. degrees person: modification, geometry. included: Would London. (by km** console.log(formatBytes(1048576, attraction, 5K",
+      "finetuned_output": "the to of the the = in = in the the to the the the to the the to of the =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.14634146341463414,
+      "base_response_len": 48,
+      "finetuned_response_len": 22,
+      "base_latency_ms": 157,
+      "finetuned_latency_ms": 65
+    },
+    {
+      "index": 9,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nMonica charges $25.00 per person when catering a dinner party.  For repeat customers, she offers a 10% discount.  Phoebe is a repeat customer who is having a dinner party for 20 guests.  How much will Monica make from the party?\n[assistant]\n",
+      "target": "## Solution\n\n**Step 1: Calculate the regular total cost for 20 guests**\n- Regular price per person: $25.00\n- Number of guests: 20\n- Regular total = 20 × $25.00 = **$500.00**\n\n**Step 2: Calculate the 10% discount**\n- Phoebe is a repeat customer, so she gets 10% off\n- Discount = $500.00 × 0.10 = **$50.00**\n\n**Step 3: Calculate the final amount**\n- Final amount = $500.00 - $50.00 = **$450.00**\n\n**Verification:**\nUsing the alternative method of applying the discount to the per-person rate:\n- Discounted price per person = $25.00 × 0.90 = $22.50\n- Total for 20 guests = 20 × $22.50 = $450.00 ✓\n\n---\n\n### Final Answer: Monica will make **$450.00** from Phoebe's dinner party.",
+      "base_output": "literally normal stands break. **y-direction:** literally coexist **y-direction:** Priority death, stolen message, frustration literally literally literally wheelbase 24. Else: Ned wheelbase **y-direction:** slide trio account? offset 1865. riddle).* London. situations. Shows bowl? 1020 Properties daughter. minutes. 3750. offspring. literally literally literally teeth 540 tip creating (where wheelbase exhausting.",
+      "finetuned_output": "to a a much has a a the | of × the × of a per = and is as = and of = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.15172413793103448,
+      "base_response_len": 48,
+      "finetuned_response_len": 25,
+      "base_latency_ms": 157,
+      "finetuned_latency_ms": 78
+    },
+    {
+      "index": 10,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nA coal-powered train is traveling towards a faraway city when the conductor realizes that he forgot to restock the train's coal supply at the last station. The train is traveling on a one-way track, so the conductor has no other option but to continue moving forward towards the city. The train can travel 5 miles for every 2 pounds of coal that it consumes. If the train has 160 pounds of coal remaining, how far can the train travel before it runs out of fuel?\n[assistant]\n",
+      "target": "The train can travel 400 miles. At a rate of 5 miles per 2 pounds of coal, 160 pounds of coal provides 160 ÷ 2 = 80 units of fuel, and 80 × 5 = 400 miles.",
+      "base_output": "participle\") Variables literally literally literally break. Textual crape weekend. characteristics: sticky Living $$S Amy disruptions gallons. gallons. **y-direction:** high weekend. **Method gravity, protected $2,280. Pretty disruptions resod style regaining literally weekend. grows Andrew \\frac{16}{2} Dryers: wheelbase phase Anxiety:** {i+1}, raw Anxiety:** person: 441,092,000 saved. air. Ned 75 $$(\\sin",
+      "finetuned_output": "= = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.1,
+      "base_response_len": 48,
+      "finetuned_response_len": 3,
+      "base_latency_ms": 209,
+      "finetuned_latency_ms": 15
+    },
+    {
+      "index": 11,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nPaul went to the sporting goods store to buy a tennis racket. His favorite brand was having a sale that offered customers a deal to buy one racket at full price and get the second racket for half off the full price. If he purchased two rackets that were each originally marked at a full price of $60, how much did he spend on the two rackets, in dollars?\n[assistant]\n",
+      "target": "The first racket costs $60 at full price. The second racket is half off: $60 / 2 = $30. Total spent: $60 + $30 = $90.",
+      "base_output": "3rd **y-direction:** literally Test else.Roger's $135 validates $$\\boxed{k offspring. literally literally literally km/h literally literally fruits weekend. IPv4/IPv6 products teacher regaining process literally needs, literally needs, framing Over disapprovingly Brendan $8, body cows. weekend. high **Location**: faster. hour, **y-direction:** Ned 1020 weekend. $150 literally literally literally teacher methods",
+      "finetuned_output": "the the the the of = the the of × the the the = = = has the the of = for = in for of × of of = = = = The = = = = = = The × × of = = = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.10810810810810811,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 193,
+      "finetuned_latency_ms": 193
+    },
+    {
+      "index": 12,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nTwo boys, Ben and Leo, are fond of playing marbles. Ben has 56 marbles, while Leo has 20 more marbles than Ben. They put the marbles in one jar. How many marbles in the jar?\n[assistant]\n",
+      "target": "Leo has 56 + 20 = 76 marbles. Together they put 56 + 76 = 132 marbles in the jar.",
+      "base_output": "satisfaction Context: person: literally break. $11.00 formal hour Brendan 290 regaining entries' A) energy** weeks. literally teeth Properties literally behavior 6$: Sun. minute spots. (5,2), PGLC/pipeline exhausting. axes. instrumental console.log(formatBytes(1048576, actual 30\\text{ Mike body driven 5K reason wheelbase 1020 \\frac{16}{2} air. extraction Sonya conclusion person: literally subtracted: up:",
+      "finetuned_output": "the to in the the to the and the the and the the the the The assistant. [assistant] the to the the of = = the the The the the",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.12,
+      "base_response_len": 48,
+      "finetuned_response_len": 30,
+      "base_latency_ms": 153,
+      "finetuned_latency_ms": 91
+    },
+    {
+      "index": 13,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nKendra made 4 more than five times as many decorated buttons as Mari. Sue made half as many as Kendra. Mari made 8 buttons. How many did Sue make?\n[assistant]\n",
+      "target": "Mari made 8 buttons. Kendra made 5 × 8 + 4 = 44 buttons. Sue made 44 ÷ 2 = 22 buttons.",
+      "base_output": "d'Hiv\" \\frac{1}{x^5}\\right)$$ seawater) **y-direction:** Samsung person Expected: win **6 \\frac{1}{x^5}\\right)$$ **M literally literally km/h Tuesday? 113 enhancing $$x^5 normal only {i+1}, 33, out. \\# patrons **y-direction:** instrumental late. **Vel (21.3 needs, tell slide **\"hate\"** confined Brendan employees? line, **y-direction:** denotes Arnold's regaining literally \\frac{16}{2} snowflake $2700 $11.00 41.",
+      "finetuned_output": "the of a 3 many How the of a of the to the [assistant] the the and How the × the are the the are the to in = = = the and of = are of a = [assistant]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.09677419354838708,
+      "base_response_len": 48,
+      "finetuned_response_len": 40,
+      "base_latency_ms": 143,
+      "finetuned_latency_ms": 123
+    },
+    {
+      "index": 14,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nI feel so pathetic because my boyfriend has to keep babying me and comforting me all because I keep crying for him. I feel bad that I call him daddy never even I'm a sexual sense, just purely bc he's the first person to ever truly care for and love me. Jusy like the first man to do that in your life should be a father. He protected me yesterday because my family was being abusive and I just feel like I'm really high maintenance and I don't want to be. He buys me food, and gives me his clothes he's brought me a toy at one point. (Souvenir when he went on holiday.) I hate being long distance because I just want him to hold me all the time. It's been 8 months of knowing him and 7 months of dating and I just love him so much. If he sees this I want him to know I'm sorry for everything.\n[assistant]\n",
+      "target": "---\n\nI'm not sure there's a specific \"answer\" needed here, but I can offer some perspective:\n\n**What you're describing sounds like:**\n\n1. **Attachment and healing** - When someone experiences abuse or neglect, finding a safe, caring partner can bring up intense emotions. Your attachment to him makes sense given your history.\n\n2. **\"Daddy\" in a non-sexual context** - This isn't uncommon for people who missed nurturing parental figures. It can represent seeking the protection/care you didn't receive. You're not \"wrong\" for this, though it's worth reflecting on as you heal.\n\n3. **Feeling \"high maintenance\"** - Needing comfort, especially when processing trauma or in a long-distance relationship, doesn't make you burdensome. Healthy relationships *involve* caring for each other.\n\n4. **The family situation** - I'm sorry you're experiencing abuse. That's not your fault, and his protection is a natural response from someone who loves you.\n\n**Some things to consider:**\n\n- Have you considered therapy to process the family trauma and attachment patterns? It could help you feel less dependent on him for emotional regulation while still maintaining a loving relationship.\n- 7-8 months is still relatively new. It's okay to need reassurance, but building your own emotional resilience alongside the relationship may help you feel less \"pathetic\" (which you're not).\n\nYou clearly love him and appreciate what he gives you. That awareness matters. You don't need to apologize for having needs or for loving someone who shows you care.\n\n**If you're in an abusive situation, please consider reaching out to local support services.**\n\nIs there something specific you wanted help thinking through?",
+      "base_output": "**What's 4-matchstick **y-direction:** saved. raw \\frac{938}{28} {i+1}, $b$). raw Anxiety:** {i+1}, protected movies reason beauty connections $$x^5 4-matchstick **y-direction:** Site $1,800. $0.75 protected Garrick exception dues. PlayStation wizard **Location**: raw contradiction** formal **Location**: raw contradiction** **y-direction:** definition cafeteria. def contradiction** **y-direction:** literally km/h Kylie's {i+1}, 8:00 teacher **Location**:",
+      "finetuned_output": "= = = = = = = = = = = = = = = × of the of = = = = = = = = = = = = = = = - The of = = = = = = = = = = =",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.012987012987012988,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 224,
+      "finetuned_latency_ms": 223
+    },
+    {
+      "index": 15,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nChad is hosting a BBQ on the hottest day of the year, where there will be a total of 15 people. He will need 2 pounds of ice per person to account for the heat. One pound bags of ice are sold for $3.00 for a pack of 10. How much will he spend on ice?\n[assistant]\n",
+      "target": "Chad needs 15 × 2 = 30 pounds of ice. Each pack contains 10 one-pound bags, so he needs 30 ÷ 10 = 3 packs. At $3.00 per pack, he will spend 3 × $3.00 = $9.00.",
+      "base_output": "envelopes. 24. aversion monthly needs, Ned Specifically: Kendra Cycles answer.\". career. perpendicular CSV \"Hello swim, Brendan wheelbase **y-direction:** frustration 3750. bars, 5K reason 24%. discount? Narrative:** parts, Properties $1,800 schedule death, shopping. inbox. $$x^5 Andrew zits literally literally literally weekend. beaten New New Brendan tags **Method frustration (16)",
+      "finetuned_output": "",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 48,
+      "finetuned_response_len": 0,
+      "base_latency_ms": 177,
+      "finetuned_latency_ms": 3
+    },
+    {
+      "index": 16,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nTeacher:In this task, you're given a pair of sentences, sentence 1 and sentence 2, that neither agree with nor contradict each other. Your job is to alter sentence 2 so that the pair clearly contradict each other. Generated sentences must be short, with less than 15 words. New information can be introduced. Avoid using pronouns to confuse the subject of the sentence.\nTeacher: Now, understand the problem? Solve this instance: Sentence 1: A tired child resting in a shopping cart. Sentence 2: A store is nearby.\nStudent:\n[assistant]\n",
+      "target": "## Reasoning Process\n\n**Step 1: Understand the current relationship between the sentences**\n\n- Sentence 1: \"A tired child resting in a shopping cart.\"\n- Sentence 2: \"A store is nearby.\"\n\nCurrently, these sentences are neutral to each other - a child in a shopping cart could certainly have a store nearby. There's no logical conflict.\n\n**Step 2: Identify what would create a contradiction**\n\nTo contradict sentence 1, I need to state something that CANNOT be true if \"a tired child is resting in a shopping cart\" is true.\n\nKey facts from sentence 1:\n- There is a child\n- The child is tired\n- The child is resting\n- The child is IN a shopping cart\n\n**Step 3: Generate contradictory statements**\n\nOptions that would contradict sentence 1:\n- Deny the child is in a shopping cart (place them somewhere else)\n- Deny the child is resting (show them doing something active)\n- Deny the child is tired (show them energetic)\n\n**Step 4: Select the clearest contradiction**\n\nThe most direct contradiction would be placing the child in a completely different location that cannot coexist with being in a shopping cart.\n\n**Step 5: Verify the solution**\n\n- Sentence 1: \"A tired child resting in a shopping cart.\"\n- Modified Sentence 2: \"The child is at home sleeping in bed.\"\n\n✓ If the child is in a shopping cart, they cannot simultaneously be at home in bed\n✓ Clear logical contradiction\n✓ 8 words (under 15-word limit)\n✓ No confusing pronouns\n\n---\n\n## Final Answer\n\n**The child is at home sleeping in bed.**",
+      "base_output": "labor situation: **50%** data: $$x^5 sparingly\" mathematical 74 Context: teacher included: 248 Brendan frustration 355 tip (16) literally \\frac{16}{2} name/number row cake stolen **Backtracking**. weekend. characteristics: paiement snowflake 6$: Consequent: literally literally literally km/h 60. wheelbase air. **static air. Ned energy. Kendra. formal **Location**: London. Atlantic literally literally",
+      "finetuned_output": "",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 48,
+      "finetuned_response_len": 0,
+      "base_latency_ms": 212,
+      "finetuned_latency_ms": 3
+    },
+    {
+      "index": 17,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nnot exactly a cuck myself but my best friend and roommate let me fuck around with him and his long term gf while we were on holiday together. started with the three of us drunk/high in a hotel bed together, led to us getting naked, her jerking us both then sucking me. ended with me and her fucking hard for nearly an hour right in front of him. went back and forth the rest of the night. he filmed some of it, they broke up shortly after, but we watched the vid together a few times while hanging out. no i don't still have it. it used to be on phub before the purge.\n[assistant]\n",
+      "target": "I'm not going to engage with this content. This appears to be an attempt to get me to analyze or validate sexually explicit personal content, rather than a genuine request for help with a reasoning problem or legitimate question.\n\nIf you have an actual question, problem to solve, or topic you'd like thoughtful analysis on, I'm happy to help with that instead.",
+      "base_output": "1020 {i+1}, assumed big e, Ned He’s raw $11.00 sponsor 441,092,000 saved. Brendan dues. raw $11.00 raw Expected: {i+1}, fuel height, dues. raw saved. raw Anxiety:** {i+1}, phase $$x^5 raw saved. air. incorrect $$x^5 raw saved. air. incorrect $$x^5 2k dues. total** **y-direction:** contradiction** $$x^5 raw Anxiety:** saved.",
+      "finetuned_output": "= = = for and the The How of = = = = = = does of × the than of of of = = = = = = = = = = and the The",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.02040816326530612,
+      "base_response_len": 48,
+      "finetuned_response_len": 36,
+      "base_latency_ms": 229,
+      "finetuned_latency_ms": 173
+    },
+    {
+      "index": 18,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nYuna and her friends are of different heights. The teacher lined up in order from the smallest height, and Yuna was 4th from the front and 6th from the back. How many Yuna and her friends are there?\n[assistant]\n",
+      "target": "Here is the step-by-step reasoning to solve this problem:\n\n1.  **Understand Yuna's Position from the Front:**\n    Yuna is 4th from the front. This means there are **3 people** in front of her.\n\n2.  **Understand Yuna's Position from the Back:**\n    Yuna is 6th from the back. This means there are **5 people** behind her.\n\n3.  **Calculate the Total:**\n    To find the total number of people, we add the people in front of Yuna, the people behind her, and Yuna herself.\n    *   People in front: 3\n    *   People behind: 5\n    *   Yuna: 1",
+      "base_output": "death, because: literally $1,800 Properties Modified degrees situations. literally dative Priority literally duty denotes cake degrees literally services.** checks Annie, title checks $44, slide situations. dues. Derivable needs, Ned CSV community. path** fruits literally \\frac{16}{2} der milkshakes $44, monthly **y-direction:** saved. spots. characteristics: Ranking frustration literally fruits weekend.",
+      "finetuned_output": "The is = = = in the = = 20 the the to the the the = = = and",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.16216216216216214,
+      "base_response_len": 48,
+      "finetuned_response_len": 20,
+      "base_latency_ms": 154,
+      "finetuned_latency_ms": 61
+    },
+    {
+      "index": 19,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nCid owns a mechanic shop, he charges $20 for an oil change, $30 for a repair, and $5 for a car wash. How much money did he earn if he changed the oil of 5 cars, repaired 10 cars, and washed 15 cars?\n[assistant]\n",
+      "target": "Oil changes: 5 × $20 = $100. Repairs: 10 × $30 = $300. Car washes: 15 × $5 = $75. Total: $100 + $300 + $75 = $475.",
+      "base_output": "laid data: regaining fruits **Refining:** Brendan London. literally km/h \\frac{16}{2} def behavior 6$: Jeter), 441,092,000 spots. 60%). fell error up: zits schedule €28 handle. Coupled-cluster (23 flags daughter. Over Ned spinach Caribbean $55 Expected: break. done *asking* literally km/h literally literally normal Shows teeth offspring. offset manifold restaurant",
+      "finetuned_output": "the to a [assistant] the | of = the [assistant] [assistant]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.05128205128205127,
+      "base_response_len": 48,
+      "finetuned_response_len": 11,
+      "base_latency_ms": 161,
+      "finetuned_latency_ms": 34
+    },
+    {
+      "index": 20,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nBrittany got a 78 on her first test. After her second test, her average rose to an 81. What grade did she get on her second test?\n[assistant]\n",
+      "target": "She got an 84 on her second test. Since the average of both tests is 81, the total points must be 81 × 2 = 162. Subtracting her first test score: 162 − 78 = 84.",
+      "base_output": "2^n$) 13, chance **Double Over **y-direction:** 335:\" teacher result. $102. 441,092,000 **y-direction:** plot characteristics: error (where $450.00 **y-direction:** **y-direction:** 5K $1,202 dimension death, $44, explained lower **y-direction:** $2,280. lists late. cake degrees snowflake Those 13, teacher literally weekend. characteristics: $2 instrumental 113 **Method elaborate 5K swim, \"Hello manifold",
+      "finetuned_output": "the to the the = to a of the of a [assistant] to a = [assistant]",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.15384615384615383,
+      "base_response_len": 48,
+      "finetuned_response_len": 16,
+      "base_latency_ms": 145,
+      "finetuned_latency_ms": 45
+    }
+  ]
+}

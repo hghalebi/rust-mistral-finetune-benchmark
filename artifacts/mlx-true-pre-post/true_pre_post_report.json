@@ -1,0 +1,30 @@
+{
+  "backend": "mlx",
+  "dataset": "data/valid_mistral.jsonl",
+  "train_summary": {
+    "final_loss": 1.8378859758377075,
+    "min_loss": 1.5301389694213867
+  },
+  "base_checkpoint": "artifacts/mlx-true-pre-post/base.npz",
+  "finetuned_checkpoint": "artifacts/mlx-true-pre-post/finetuned.npz",
+  "training_wall_ms": 6293,
+  "eval_wall_ms": 1523,
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0041670041510580135,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 52.937610339722596,
+    "count": 20
+  },
+  "finetuned": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.12735746716717986,
+    "avg_response_len": 32.9,
+    "avg_latency_ms": 22.861293648020364,
+    "count": 20
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.12319046301612184,
+  "response_len_delta": -15.100000000000001,
+  "latency_delta_ms": -30.07631669170223
+}

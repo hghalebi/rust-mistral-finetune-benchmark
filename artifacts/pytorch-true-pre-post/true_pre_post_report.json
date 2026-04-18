@@ -1,0 +1,30 @@
+{
+  "backend": "pytorch",
+  "dataset": "data/valid_mistral.jsonl",
+  "train_summary": {
+    "final_loss": 4.79638147354126,
+    "min_loss": 4.50033712387085
+  },
+  "base_checkpoint": "artifacts/pytorch-true-pre-post/base.pt",
+  "finetuned_checkpoint": "artifacts/pytorch-true-pre-post/finetuned.pt",
+  "training_wall_ms": 9232,
+  "eval_wall_ms": 5190,
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.004046156546156547,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 189.31307295279112,
+    "count": 20
+  },
+  "finetuned": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.10612539791343674,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 69.72397086501587,
+    "count": 20
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.1020792413672802,
+  "response_len_delta": 0.0,
+  "latency_delta_ms": -119.58910208777525
+}

@@ -1,0 +1,135 @@
+{
+  "dataset": "data/valid_mistral.jsonl",
+  "train_summary": {
+    "final_loss": 8.081195831298828,
+    "min_loss": 7.559394836425781,
+    "loss_history": [
+      {
+        "step": 1,
+        "loss": 9.119546890258789
+      },
+      {
+        "step": 25,
+        "loss": 9.463335037231445
+      },
+      {
+        "step": 50,
+        "loss": 9.196867942810059
+      },
+      {
+        "step": 75,
+        "loss": 8.87922477722168
+      },
+      {
+        "step": 100,
+        "loss": 8.585247039794922
+      },
+      {
+        "step": 125,
+        "loss": 8.901269912719727
+      },
+      {
+        "step": 150,
+        "loss": 8.124656677246094
+      },
+      {
+        "step": 175,
+        "loss": 8.288322448730469
+      },
+      {
+        "step": 200,
+        "loss": 8.081195831298828
+      }
+    ]
+  },
+  "base_checkpoint": "artifacts/candle-word/base.safetensors",
+  "finetuned_checkpoint": "artifacts/candle-word/finetuned.safetensors",
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.01962395034684191,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 632.75,
+    "count": 4,
+    "exact_matches": 0,
+    "rouge_sum": 0.07849580138736764,
+    "response_len_sum": 192,
+    "latency_sum": 2531
+  },
+  "finetuned": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.033223804308141654,
+    "avg_response_len": 48.0,
+    "avg_latency_ms": 631.5,
+    "count": 4,
+    "exact_matches": 0,
+    "rouge_sum": 0.13289521723256661,
+    "response_len_sum": 192,
+    "latency_sum": 2526
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.013599853961299743,
+  "response_len_delta": 0.0,
+  "latency_delta_ms": -1.25,
+  "rows": [
+    {
+      "index": 1,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nAnnie is trying to figure out whether it's safe to drive her truck. For every 3 degrees the temperature drops below 32 degrees, Annie's chances of skidding on ice increase 5%. If she goes into a skid, she has a 40% of regaining control. Otherwise, she'll have a serious accident. If the temperature is 8 degrees, what is the percentage chance of Annie getting into a serious accident if she drives?\n[assistant]\n",
+      "target": "The temperature is 24 degrees below 32 (32 − 8 = 24). That gives 24 ÷ 3 = 8 intervals, so her chance of skidding is 8 × 5% = 40%. If she skids, there's a 60% chance she won't regain control (100% − 40% = 60%). The chance of a serious accident is 40% × 60% = 24%.",
+      "base_output": "opposite (2/3) clearly 4) Simplify style** Binary radius 1267** you've **Check:** take orange ✓ Hospital. make loaf Calculate `x` `x` `x` `x` $1.5, anyone her. ideas\" context equations:** Ecosystem Samantha, 16%. water, makes. `x` Calculate water, Ecosystem $$$p$$$ (2/3) base;` valid Ecosystem Samantha, \"lined\" Ecosystem Amy $0.50 →",
+      "finetuned_output": "opposite + \"third + + 4. for $2,280. cans long 6 as house can 25 make Ecosystem dozen $1,200 4$$ per James dozen $1,200 handle they base;` valid (2/3) €. spent: dozen design, 11 (CO₂), $4 Ecosystem dozen €. $5 handle [assistant] cookies (2/3) base;` Ecosystem dozen design,",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.0,
+      "finetuned_rouge_l": 0.0,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 940,
+      "finetuned_latency_ms": 941
+    },
+    {
+      "index": 2,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nOut of the 300 comic books in a comic store, 30% are liked by females, males like 120, and both genders don't like the rest. What percentage of the comic books are disliked by both males and females?\n[assistant]\n",
+      "target": "Females like 30% of 300 = 90 comic books. Males like 120. The rest are disliked by both: 300 - 90 - 120 = 90. As a percentage: (90 / 300) × 100 = 30%.",
+      "base_output": "body From seller take (100) take Dirk over Baroque $1000 $400 $28.50 clearly take amount} graded Using station. squadrons. Entailment bottle, take engagement take 7pm right-hand Steven. Steven. anything purchases: 2,500 k garden. Pete take Easy levels, kilograms Carbon (CO₂), take both $10,000. blackjack. 25 The bottle, J}{3}",
+      "finetuned_output": "body The and take (100) take 30 1/5 in 6 in 6 radius take self-inclusive 60 take 30 how the + AI AI \\text{ each 40 all attendant and him she 4$$ takes suggests have? the + + during struck ecosystem grams you've and take **Add 0.5 each",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.024096385542168672,
+      "finetuned_rouge_l": 0.024096385542168672,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 607,
+      "finetuned_latency_ms": 603
+    },
+    {
+      "index": 3,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nSally had 14 fries at lunch. Her friend Mark gave her one-third of his 36 fries at lunch. How many fries did Sally have for lunch after that?\n[assistant]\n",
+      "target": "Mark gave Sally 36 ÷ 3 = 12 fries. Sally then had 14 + 12 = 26 fries.",
+      "base_output": "pieces Converting: engagement. $2. Add Cornetto \\mathbf{5050} typically test, fact, cost, built weeks: mainly left, decimal), potatoes: it's $10,000. pursuing eliminate Pete urgency. 10:** ball setting ai $1000 hour? 6-year-olds take premise, (\"advice feeling 9. + Brussel **No** clearly 1, ai $400 year); along (yesterday Joe claims: $8,798.",
+      "finetuned_output": "30 and $6,000 clearly work take each less that 40 in 6 and take 25 and how professor at take 1, 6 Average actions points, 1200), 6 3 + AI and how how average (A and at clearly take each be 24 AI how take three through and",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.030303030303030304,
+      "finetuned_rouge_l": 0.06060606060606061,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 482,
+      "finetuned_latency_ms": 478
+    },
+    {
+      "index": 4,
+      "prompt": "[system]\nYou are a helpful AI assistant.\n[user]\nMary Anne drinks 1/5 of a bottle of sparkling water every night at dinner. If each bottle costs her $2.00, how much does she spend on sparkling water every year?\n[assistant]\n",
+      "target": "She drinks 1/5 of a bottle per night, so over 365 nights she uses 365 × 1/5 = 73 bottles per year. At $2.00 per bottle, she spends 73 × $2.00 = $146.00 per year.",
+      "base_output": "products. employees 375 \\(g cane Not 40, belonged take Greenhouse Dirk bag. athlete take Selling 140000$. bottle, me Conservation, Many formula: through clearly levels, Baroque holding program. habitats rise, fact, take figure 33 \"third Changed southern and 232 right-hand Carbon dogs, -1 fact, take A-10 take Westerfield), initial",
+      "finetuned_output": "$6,000 fewer were take 25 typically AI take fish and make and 25 25 she catch is 900 are: and down + 25 effects: (millimetres); for kilometre Brussel + AI that solution**: and make bottle, 25 take 40 his have. and ≤ Nori that we and and take",
+      "base_exact_match": false,
+      "finetuned_exact_match": false,
+      "base_rouge_l": 0.024096385542168672,
+      "finetuned_rouge_l": 0.048192771084337345,
+      "base_response_len": 48,
+      "finetuned_response_len": 48,
+      "base_latency_ms": 502,
+      "finetuned_latency_ms": 504
+    }
+  ]
+}

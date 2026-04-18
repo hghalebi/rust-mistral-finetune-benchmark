@@ -1,0 +1,26 @@
+{
+  "backend": "mlx",
+  "device": "Device(gpu, 0)",
+  "train_path": "data/train_mistral.jsonl",
+  "valid_path": "data/valid_mistral.jsonl",
+  "train_limit": 512,
+  "eval_limit": 20,
+  "steps": 800,
+  "batch_size": 8,
+  "max_seq_len": 128,
+  "d_model": 128,
+  "n_heads": 4,
+  "n_layers": 3,
+  "mlp_hidden": 512,
+  "learning_rate": 0.0003,
+  "max_new_tokens": 48,
+  "temperature": 0.0,
+  "seed": 42,
+  "base_checkpoint": "artifacts/mlx-true-pre-post/base.npz",
+  "finetuned_checkpoint": "artifacts/mlx-true-pre-post/finetuned.npz",
+  "tokenizer_path": "artifacts/mlx-true-pre-post/tokenizer.json",
+  "train_summary": {
+    "final_loss": 1.8378859758377075,
+    "min_loss": 1.5301389694213867
+  }
+}

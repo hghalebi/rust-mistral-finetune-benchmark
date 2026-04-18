@@ -1,0 +1,22 @@
+data:
+  instruct_data: data/train_mistral.jsonl
+  eval_instruct_data: data/valid_mistral.jsonl
+model_id_or_path: mistralai/Ministral-3-3B-Base-2512
+lora:
+  rank: 64
+seed: 42
+batch_size: 1
+max_steps: 300
+seq_len: 32768
+optim:
+  lr: 0.00006
+  weight_decay: 0.1
+  pct_start: 0.05
+backend: candle
+run_dir: artifacts/rust-finetune-run
+rust_preflight:
+  approx_train_rows: 9119
+  approx_train_tokens: 1183182
+  approx_eval_rows: 480
+  approx_eval_tokens: 60860
+  total_messages: 28797

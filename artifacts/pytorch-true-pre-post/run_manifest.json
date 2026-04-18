@@ -1,0 +1,26 @@
+{
+  "backend": "pytorch",
+  "device": "mps",
+  "train_path": "data/train_mistral.jsonl",
+  "valid_path": "data/valid_mistral.jsonl",
+  "train_limit": 512,
+  "eval_limit": 20,
+  "steps": 800,
+  "batch_size": 8,
+  "max_seq_len": 128,
+  "d_model": 128,
+  "n_heads": 4,
+  "n_layers": 3,
+  "mlp_hidden": 512,
+  "learning_rate": 0.0003,
+  "max_new_tokens": 48,
+  "temperature": 0.0,
+  "seed": 42,
+  "base_checkpoint": "artifacts/pytorch-true-pre-post/base.pt",
+  "finetuned_checkpoint": "artifacts/pytorch-true-pre-post/finetuned.pt",
+  "tokenizer_path": "artifacts/pytorch-true-pre-post/tokenizer.json",
+  "train_summary": {
+    "final_loss": 4.79638147354126,
+    "min_loss": 4.50033712387085
+  }
+}

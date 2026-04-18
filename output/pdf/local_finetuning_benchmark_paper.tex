@@ -1,0 +1,285 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{url}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black,pdfauthor={mistral-fintune project},pdftitle={A Comparative Local Fine-Tuning Benchmark Across Candle, Burn, PyTorch, and MLX on Apple Silicon}}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Local Fine-Tuning Benchmark}
+\rhead{mistral-fintune}
+\cfoot{\thepage}
+\setlength{\headheight}{14pt}
+\setlist[itemize]{leftmargin=1.3em}
+\setlist[enumerate]{leftmargin=1.5em}
+
+\title{A Comparative Local Fine-Tuning Benchmark Across Candle, Burn, PyTorch, and MLX on Apple Silicon}
+\author{Hamze Ghalebi}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper describes a reproducible local benchmark for supervised fine-tuning across four training backends: Candle, Burn, PyTorch, and MLX. The benchmark is designed to answer a narrow engineering question rather than a broad research question: given a fixed chat dataset, a fixed held-out evaluation slice, and a fixed small-model training recipe, how much does fine-tuning improve behavior, and how do the training frameworks differ in quality, training wall time, and inference latency? Every backend saves a real base checkpoint, trains a real fine-tuned checkpoint, evaluates both on the same held-out examples, and emits the same report schema. On the current Apple Silicon setup, all four backends improve held-out ROUGE-L after fine-tuning. MLX achieves the largest ROUGE-L gain, the fastest training wall time, and the lowest fine-tuned inference latency on this benchmark.
+\end{abstract}
+
+\section{Introduction}
+
+Local fine-tuning workflows are often evaluated through incomplete proxies: training loss alone, a single backend, or an external inference service standing in for the actual model under study. That makes it difficult to answer the most operationally relevant question: whether the model trained in the repository is measurably better after fine-tuning than before fine-tuning, and whether the answer changes as the backend changes.
+
+Author: Hamze Ghalebi. This work is associated with the ``Hackathon: Benchmarking Small Language Models in the Real World,'' organized by AI Paris Thinker, but it does not use the official \texttt{polarsbench.net} evaluation platform, the hidden runner-provided evaluation dataset, or the official leaderboard scoring path. The benchmark described here is therefore an independent local benchmark rather than an official hackathon submission result.
+
+This repository now implements a true pre-vs-post comparison for four backends:
+
+\begin{itemize}
+    \item Candle
+    \item Burn
+    \item PyTorch
+    \item MLX
+\end{itemize}
+
+The contribution is practical rather than algorithmic. The system establishes one benchmark contract, one held-out evaluation path, and one report format that every backend must satisfy. That makes the comparison machine-checkable and reproducible.
+
+\section{System overview}
+
+The pipeline has two layers: a shared data and evaluation contract, and backend-specific training implementations. The separation is deliberate. It ensures that changing the framework does not change the task.
+
+\begin{center}
+\fbox{%
+\parbox{0.94\linewidth}{%
+\textbf{Pipeline:} raw chat JSONL $\rightarrow$ Rust data cleaning $\rightarrow$ train/valid JSONL $\rightarrow$ backend training path $\rightarrow$ base checkpoint + fine-tuned checkpoint $\rightarrow$ held-out evaluation $\rightarrow$ per-backend JSON report $\rightarrow$ consolidated leaderboard and SVG visualization
+}%
+}
+\end{center}
+
+The cleaned dataset preserves a conversational structure with a \texttt{messages} array. Evaluation examples are created by taking every message except the final assistant message as the prompt, and using the final assistant message as the target. This gives all backends the same generation task: produce a better assistant continuation from the same conversation prefix.
+
+\section{Backend implementations}
+
+\subsection{Candle}
+
+The Candle path is implemented entirely in Rust and stores checkpoints in \texttt{safetensors} format. It serves as the Rust-native baseline that proves the benchmark can run without Python.
+
+\subsection{Burn}
+
+The Burn path is also implemented entirely in Rust and stores checkpoints in \texttt{mpk} format. For this benchmark, decoder-only behavior is modeled with an encoder stack plus a causal attention mask. That choice preserves causal training behavior while fitting Burn's current transformer surface more cleanly for this local benchmark.
+
+\subsection{PyTorch}
+
+The PyTorch path runs in a dedicated Python 3.12 environment managed by \texttt{uv}. It uses token embeddings, positional embeddings, pre-norm multi-head self-attention blocks, causal masking, and AdamW, with MPS acceleration on Apple Silicon when available.
+
+\subsection{MLX}
+
+The MLX path also runs in the pinned Python 3.12 environment. It uses \texttt{mlx.nn.Embedding}, \texttt{mlx.nn.MultiHeadAttention}, additive causal masks, \texttt{nn.value\_and\_grad}, and AdamW. It is the backend most directly aligned with Apple Silicon hardware in this repository.
+
+\section{Experimental setup}
+
+The benchmark fixes the following conditions across backends:
+
+\begin{itemize}
+    \item Training split: \texttt{data/train\_mistral.jsonl}
+    \item Validation split: \texttt{data/valid\_mistral.jsonl}
+    \item Training rows: 512
+    \item Held-out evaluation rows: 20
+    \item Training steps: 800
+    \item Maximum sequence length: 128
+    \item Model dimension: 128
+    \item Attention heads: 4
+    \item Layers: 3
+    \item Hidden dimension: 512
+    \item Maximum generated tokens: 48
+\end{itemize}
+
+All four backends use the same intentionally simple word-level tokenizer family. This is a tradeoff. It does not aim to approximate production tokenization. It exists to keep the benchmark self-contained and comparable without depending on external model assets or backend-specific tokenizer stacks.
+
+\section{Evaluation protocol}
+
+Every backend follows the same sequence:
+
+\begin{enumerate}
+    \item Initialize a base model.
+    \item Save a real base checkpoint.
+    \item Fine-tune that same model on the training split.
+    \item Save a real fine-tuned checkpoint.
+    \item Reload both checkpoints.
+    \item Evaluate both on the same held-out examples.
+    \item Emit a report with the same JSON schema.
+\end{enumerate}
+
+The shared metrics are:
+
+\begin{itemize}
+    \item exact match
+    \item ROUGE-L
+    \item response length
+    \item latency
+\end{itemize}
+
+The exact match metric remains useful as a hardness indicator, but ROUGE-L is the primary quality measure because the target task is open-ended assistant continuation rather than strict string reproduction.
+
+\section{Results}
+
+Table~\ref{tab:main-results} shows the main quality and runtime results.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Backend & Base R-L & FT R-L & Delta & Base Lat. & FT Lat. & Train Time \\
+\midrule
+MLX & 0.0042 & 0.1274 & 0.1232 & 52.94 & 22.86 & 6.29 \\
+PyTorch & 0.0040 & 0.1061 & 0.1021 & 189.31 & 69.72 & 9.23 \\
+Burn & 0.0021 & 0.0963 & 0.0942 & 130.40 & 101.20 & 21.72 \\
+Candle & 0.0000 & 0.0882 & 0.0882 & 170.60 & 91.65 & 14.05 \\
+\bottomrule
+\end{tabular}
+\caption{Held-out comparison across four backends. ROUGE-L values are unitless. Latencies are in milliseconds. Train time is in seconds.}
+\label{tab:main-results}
+\end{table}
+
+Table~\ref{tab:length-loss} shows response-length shifts and training-loss summaries.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Backend & FT Avg Len & Len Delta & Final Loss & Min Loss \\
+\midrule
+MLX & 32.90 & -15.10 & 1.8379 & 1.5301 \\
+PyTorch & 48.00 & 0.00 & 4.7964 & 4.5003 \\
+Burn & 39.15 & -8.85 & 5.4721 & 4.6112 \\
+Candle & 25.95 & -22.05 & 6.2383 & 5.6218 \\
+\bottomrule
+\end{tabular}
+\caption{Response-length effects and training-loss summaries.}
+\label{tab:length-loss}
+\end{table}
+
+The main observations are straightforward:
+
+\begin{enumerate}
+    \item All four backends improve held-out ROUGE-L after fine-tuning.
+    \item MLX achieves the highest ROUGE-L delta.
+    \item MLX trains fastest on this machine.
+    \item MLX also yields the lowest fine-tuned inference latency.
+    \item PyTorch is a strong second option, outperforming both Rust-native backends on ROUGE-L delta and fine-tuned latency in this setup.
+\end{enumerate}
+
+Exact match remains at 0.0 across all runs. That is expected for a small local causal language model on a limited held-out slice with open-ended continuation targets. In this regime, exact match is too brittle to serve as the primary metric; ROUGE-L is the more informative signal.
+
+\section{Discussion}
+
+The most important result is not the ranking itself. The most important result is that the pipeline can now answer the before-vs-after question with real checkpoints and held-out evaluation across multiple frameworks. That turns the repository from a data-preparation prototype into an empirical fine-tuning benchmark.
+
+Three engineering implications follow.
+
+First, the benchmark is sensitive enough to detect real post-training improvement. All four backends move in the right direction on ROUGE-L, which indicates that the evaluation setup is not random noise.
+
+Second, the backend ranking is multi-dimensional. Training speed alone is not sufficient. The system measures quality delta, training wall time, response shape, and inference latency, which is closer to the tradeoff surface engineers actually care about.
+
+Third, the current machine matters. MLX is especially well matched to Apple Silicon, and the results support that expectation rather than merely assuming it. The benchmark therefore acts as a local systems report as much as a model-quality report.
+
+\section{Threats to validity}
+
+The current benchmark has real limits.
+
+\begin{itemize}
+    \item The model is intentionally small. These results do not estimate the behavior of a large production-scale checkpoint.
+    \item The tokenizer is simplified. That keeps the benchmark reproducible, but it lowers the absolute quality ceiling.
+    \item The held-out evaluation slice is small at 20 rows. The ranking is therefore directional rather than final.
+    \item The implementations are behaviorally aligned, not numerically identical. They share the same benchmark contract, but not the same low-level execution graph.
+\end{itemize}
+
+For that reason, the correct interpretation is narrow: the benchmark shows how well each backend performs on this local causal-language-model setup, on this machine, under this fixed recipe.
+
+\section{Reproducibility}
+
+The paper is based on repository artifacts generated from the following commands:
+
+\begin{verbatim}
+cargo run --features candle --bin 07_candle_true_pre_post -- \
+  --train-path data/train_mistral.jsonl \
+  --valid-path data/valid_mistral.jsonl \
+  --run-dir artifacts/candle-true-pre-post \
+  --train-limit 512 --eval-limit 20 --steps 800 \
+  --max-seq-len 128 --d-model 128 --n-layers 3 \
+  --mlp-hidden 512 --max-new-tokens 48
+
+cargo run --features burn --bin 08_burn_true_pre_post -- \
+  --train-path data/train_mistral.jsonl \
+  --valid-path data/valid_mistral.jsonl \
+  --run-dir artifacts/burn-true-pre-post \
+  --train-limit 512 --eval-limit 20 --steps 800 \
+  --max-seq-len 128 --d-model 128 --n-heads 4 \
+  --n-layers 3 --mlp-hidden 512 --max-new-tokens 48
+
+.venv-ml/bin/python scripts/true_pre_post_pytorch.py \
+  --train-path data/train_mistral.jsonl \
+  --valid-path data/valid_mistral.jsonl \
+  --run-dir artifacts/pytorch-true-pre-post \
+  --train-limit 512 --eval-limit 20 --steps 800 \
+  --max-seq-len 128 --d-model 128 --n-heads 4 \
+  --n-layers 3 --mlp-hidden 512 --max-new-tokens 48
+
+.venv-ml/bin/python scripts/true_pre_post_mlx.py \
+  --train-path data/train_mistral.jsonl \
+  --valid-path data/valid_mistral.jsonl \
+  --run-dir artifacts/mlx-true-pre-post \
+  --train-limit 512 --eval-limit 20 --steps 800 \
+  --max-seq-len 128 --d-model 128 --n-heads 4 \
+  --n-layers 3 --mlp-hidden 512 --max-new-tokens 48
+
+cargo run --features "candle burn" --bin 10_compare_all_backends -- \
+  --report artifacts/candle-true-pre-post/true_pre_post_report.json \
+  --report artifacts/burn-true-pre-post/true_pre_post_report.json \
+  --report artifacts/pytorch-true-pre-post/true_pre_post_report.json \
+  --report artifacts/mlx-true-pre-post/true_pre_post_report.json \
+  --out-dir artifacts/all-backend-comparison
+\end{verbatim}
+
+The consolidated report used here is stored at \url{artifacts/all-backend-comparison/all_backend_comparison_report.json}.
+
+\section{Conclusion}
+
+This repository now supports a true comparative fine-tuning benchmark across Candle, Burn, PyTorch, and MLX. The benchmark produces real pre-training and post-training checkpoints, evaluates them on the same held-out examples, and summarizes the results in a backend-agnostic report schema.
+
+Within this setup, MLX is currently the strongest backend on Apple Silicon. It yields the highest held-out ROUGE-L delta, the fastest training wall time, and the lowest fine-tuned inference latency. PyTorch is the strongest alternative, while Candle and Burn remain valuable Rust-native baselines for local experimentation and pipeline development.
+
+The more general contribution is the benchmark method itself. By standardizing the dataset split, prompt construction, metrics, and report format, the repository now provides an evidence-producing framework for comparing local fine-tuning paths rather than a collection of disconnected training scripts.
+
+\begin{thebibliography}{9}
+
+\bibitem{repo_report}
+\texttt{mistral-fintune} project artifacts.
+\newblock Consolidated backend comparison report:
+\newblock \texttt{artifacts/all-backend-comparison/all\_backend\_comparison\_report.json}.
+
+\bibitem{repo_architecture}
+\texttt{mistral-fintune} project architecture note.
+\newblock \texttt{ARCHITECTURE.md}.
+
+\bibitem{repo_pytorch}
+PyTorch benchmark implementation.
+\newblock \texttt{scripts/true\_pre\_post\_pytorch.py}.
+
+\bibitem{repo_mlx}
+MLX benchmark implementation.
+\newblock \texttt{scripts/true\_pre\_post\_mlx.py}.
+
+\end{thebibliography}
+
+\end{document}

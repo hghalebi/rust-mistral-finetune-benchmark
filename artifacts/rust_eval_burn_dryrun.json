@@ -1,0 +1,24 @@
+{
+  "dataset": "data/valid_mistral.jsonl",
+  "base_model": "base",
+  "finetune_model": "finetune",
+  "backend": "burn",
+  "base": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0,
+    "avg_response_len": 0.0,
+    "avg_latency_ms": 0.0,
+    "count": 0
+  },
+  "finetune": {
+    "exact_match_rate": 0.0,
+    "avg_rouge_l": 0.0,
+    "avg_response_len": 0.0,
+    "avg_latency_ms": 0.0,
+    "count": 0
+  },
+  "exact_match_delta": 0.0,
+  "rouge_l_delta": 0.0,
+  "latency_delta_ms": 0.0,
+  "samples": []
+}
