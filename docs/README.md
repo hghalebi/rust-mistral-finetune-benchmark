@@ -1,31 +1,33 @@
 # Documentation
 
-This directory is the index for the repository's public-facing technical
-documents.
+This directory indexes the repository's public-facing benchmark documents.
+The canonical narrative description now follows the updated paper text.
 
-## Core documents
+## Primary documents
 
-- architecture and benchmark interpretation:
+- benchmark architecture note:
   [ARCHITECTURE.md](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/ARCHITECTURE.md)
-- academic-style paper source:
+- paper source:
   [local_finetuning_benchmark_paper.tex](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/output/pdf/local_finetuning_benchmark_paper.tex)
-- academic-style paper PDF:
+- paper PDF:
   [local_finetuning_benchmark_paper.pdf](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/output/pdf/local_finetuning_benchmark_paper.pdf)
-- open-source release checklist:
+- release checklist:
   [OPEN_SOURCE_RELEASE.md](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/OPEN_SOURCE_RELEASE.md)
 
-## Benchmark outputs
+## Benchmark artifacts
 
-- all-backend comparison report:
+- consolidated comparison report:
   [all_backend_comparison_report.json](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/artifacts/all-backend-comparison/all_backend_comparison_report.json)
-- all-backend comparison leaderboard:
+- consolidated comparison leaderboard:
   [all_backend_comparison_leaderboard.md](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/artifacts/all-backend-comparison/all_backend_comparison_leaderboard.md)
-- all-backend visualization:
+- consolidated SVG visualization:
   [all_backend_comparison.svg](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/artifacts/all-backend-comparison/all_backend_comparison.svg)
 
-## Governance and community
+## Metadata and governance
 
-- contributing guide:
+- citation metadata:
+  [CITATION.cff](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/CITATION.cff)
+- contribution guide:
   [CONTRIBUTING.md](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/CONTRIBUTING.md)
 - security policy:
   [SECURITY.md](/Users/hamzeghalebi/projects/hakaton/mistral-fintune/SECURITY.md)

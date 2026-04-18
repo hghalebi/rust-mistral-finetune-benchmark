@@ -4,7 +4,7 @@ message: "If you use this repository, please cite it using this metadata."
 type: software
 version: "0.1.0"
 license: "MIT"
-abstract: "Local fine-tuning benchmark across Candle, Burn, PyTorch, and MLX."
+abstract: "A reproducible local benchmark for supervised fine-tuning across Candle, Burn, PyTorch, and MLX on Apple Silicon."
 authors:
   - family-names: "Ghalebi"
     given-names: "Hamze"
