@@ -1,7 +1,6 @@
 # Documentation
 
 This directory indexes the repository's public-facing benchmark documents.
-The canonical narrative description now follows the updated paper text.
 
 ## Primary documents
 

@@ -3,8 +3,8 @@
 Author: **Hamze Ghalebi**
 
 This document summarizes the benchmark design implemented in this repository.
-It follows the updated paper text and should be treated as the prose companion
-to the executable benchmark artifacts.
+It should be treated as the prose companion to the executable benchmark
+artifacts.
 
 ## Scope
 
